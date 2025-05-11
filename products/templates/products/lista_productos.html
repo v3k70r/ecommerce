@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Lista de Productos</h1>
+    <ul>
+        {% for product in products %}
+        <li>
+            <h2>{{ product.nombre }}</h2>
+            <p>{{ product.descripcion }}</p>
+            <p><strong>Precio:</strong> ${{ product.precio }}</p>
+            {% if product.imagen %}
+                <img src="{{ product.imagen.url }}" alt="{{ product.nombre }}">
+            {% endif %}
+            <p>{% if product.disponible %}Disponible{% else %}No disponible{% endif %}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
